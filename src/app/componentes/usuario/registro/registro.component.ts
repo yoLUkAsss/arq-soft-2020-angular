@@ -39,8 +39,9 @@ export class RegistroComponent implements OnInit {
 
       }
     } catch (error) {
-        console.log(error.error);
-        this.crearModal('Alta de usuario', 'No se ha podido crear el nuevo usuario, intente nuevamente mas tarde');
+        var errorPantalla:string = error.error.Error;
+        console.log(errorPantalla);
+        this.crearModal('Alta de usuario', errorPantalla);
     }
   }
 
