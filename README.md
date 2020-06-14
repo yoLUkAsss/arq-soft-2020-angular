@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/yoLUkAsss/arq-soft-2020-angular.svg?branch=master)](https://travis-ci.org/yoLUkAsss/arq-soft-2020-angular)
+
 # Arq1Front
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.4.
