@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 
 /* Componentes */
 import { AppRoutingModule } from './app-routing.module';
@@ -16,12 +16,15 @@ import { CrearPedidoComponent } from './componentes/pedidos/crear-pedido/crear-p
 import { ListaPedidosComponent } from './componentes/pedidos/lista-pedidos/lista-pedidos.component';
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
-/* Servicio */
+/* Servicios */
 import { UsuarioService } from './servicios/usuario.service';
+import { TokenInterceptorService } from './servicios/token-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Layout */
 import { ModalClose } from './layouts/modal-close/modal-close.layout';
+
+import { AuthGuard } from './auth/auth.guard';
 
 
 @NgModule({
@@ -47,7 +50,12 @@ import { ModalClose } from './layouts/modal-close/modal-close.layout';
   exports:[
     HttpClientModule
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, 
+    AuthGuard/*, {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptorService,
+      multi: true
+    }*/],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

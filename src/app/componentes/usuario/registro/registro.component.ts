@@ -34,9 +34,10 @@ export class RegistroComponent implements OnInit {
           this.formularioRegistro.get('localidad').value,
           this.formularioRegistro.get('password').value
         );
+        
         await this.usuarioService.crearUsuario(usuario);
         this.crearModal('Alta de usuario', 'El usuario se ha dado de alta satistfactoriamente');
-
+        this.router.navigate(['/login']); 
       }
     } catch (error) {
         var errorPantalla:string = error.error.Error;

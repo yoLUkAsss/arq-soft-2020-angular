@@ -30,16 +30,17 @@ export class LoginComponent implements OnInit {
           this.formularioLogin.get('password').value
         );
 
-        await this.usuarioService.login(loginRequest);
-        console.log(await this.usuarioService.login(loginRequest));
+        await this.usuarioService.login(loginRequest).then(
+          resultado => localStorage.setItem('token', resultado.token));
+          //localStorage.setItem('role', resultado.role)
+        this.router.navigate(['/pedido']); 
+        
       }
-      
     }
     catch (error) {
-      var errorPantalla: string = error.error.Error;
-      console.log(errorPantalla);
-      this.crearModal('LOGIN', errorPantalla);
-
+      //var errorPantalla: string = error.error.Error;
+      console.log(error);
+      this.crearModal('LOGIN', "Falló trolo");
     }
   }
 
@@ -53,8 +54,7 @@ export class LoginComponent implements OnInit {
   crearModal(titulo: string, descripcion: string) {
     const modalInform = this._modalService.open(ModalClose);
     modalInform.componentInstance.title = titulo;
-    modalInform.componentInstance.description = descripcion;
-    this.router.navigate(['/inicio']);
+    modalInform.componentInstance.description = descripcion;  
 
   }
 
