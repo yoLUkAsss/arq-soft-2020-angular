@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 
 export class CrearPedidoComponent implements OnInit {
 
-  insumos:string[] = [ "Máscaras protectoras", "Barbijos", "Respiradores", "Medicamentos" ];
-  areas:string[] = [ "Atención de pacientes", "Terapia Intensiva", "Técnicos" ];
+  insumos: string[] = [ 'Máscaras protectoras', 'Barbijos', 'Respiradores', 'Medicamentos' ];
+  areas: string[] = [ 'Atención de pacientes', 'Terapia Intensiva', 'Técnicos' ];
   insumoSeleccionado;
 
   constructor() { }

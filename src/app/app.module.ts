@@ -21,8 +21,7 @@ import { UsuarioService } from './servicios/usuario.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Layout */
-import { ModalClose } from './layouts/modal-close/modal-close.layout';
-
+import { ModalCloseComponent } from './layouts/modal-close/modal-close.layout';
 
 @NgModule({
   declarations: [
@@ -31,7 +30,7 @@ import { ModalClose } from './layouts/modal-close/modal-close.layout';
     RegistroComponent,
     NavbarComponent,
     InicioComponent,
-    ModalClose,
+    ModalCloseComponent,
     CrearPedidoComponent,
     ListaPedidosComponent,
     PedidosComponent
@@ -39,12 +38,12 @@ import { ModalClose } from './layouts/modal-close/modal-close.layout';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule
   ],
-  exports:[
+  exports: [
     HttpClientModule
   ],
   providers: [UsuarioService],

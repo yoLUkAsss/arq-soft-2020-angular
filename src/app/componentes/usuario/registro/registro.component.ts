@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../validaciones/must-match.validator';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalClose } from 'src/app/layouts/modal-close/modal-close.layout';
+import { ModalCloseComponent } from 'src/app/layouts/modal-close/modal-close.layout';
 
 @Component({
   selector: 'app-registro',
@@ -15,9 +15,13 @@ import { ModalClose } from 'src/app/layouts/modal-close/modal-close.layout';
 export class RegistroComponent implements OnInit {
   formularioRegistro: FormGroup;
   submitted = false;
-  
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService:UsuarioService, private _modalService: NgbModal) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private usuarioService: UsuarioService,
+    private modalService: NgbModal
+  ) {}
 
   get f() { return this.formularioRegistro.controls; }
 
@@ -25,7 +29,7 @@ export class RegistroComponent implements OnInit {
     this.submitted = true;
     try {
       if (this.formularioRegistro.valid){
-        var usuario:Usuario = new Usuario(
+        const usuario: Usuario = new Usuario (
           this.formularioRegistro.get('nombre').value,
           this.formularioRegistro.get('email').value,
           this.formularioRegistro.get('telefono').value,
@@ -59,8 +63,8 @@ export class RegistroComponent implements OnInit {
     });
   }
 
-  crearModal(titulo:string, descripcion:string){
-    const modalInform = this._modalService.open(ModalClose);
+  crearModal(titulo: string, descripcion: string){
+    const modalInform = this.modalService.open(ModalCloseComponent);
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
     this.router.navigate(['/inicio']);
