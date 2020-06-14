@@ -1,0 +1,30 @@
+<div class="card mt-5">
+    <div class="card-body">
+        <form>
+            <div class="form-group">
+                <label>Seleccioná el insumo que necesitas</label>
+                <select name="insumo" class="form-control" [(ngModel)]="insumoSeleccionado">
+                    <option [value]="undefined" hidden>Selecciona una opción</option>
+                    <option [value]="insumo" *ngFor="let insumo of insumos">{{insumo}}</option>
+                </select>
+            </div>
+
+            <div class="form-group" *ngIf=" insumoSeleccionado == 'Medicamentos' ">
+                <label>¿Qué medicamento necesitas?</label>
+                <input class="form-control">
+            </div>
+
+            <div class="form-group">
+                <label>Seleccioná el área a la cual es destinada</label>
+                <select name="area" class="form-control">
+                    <option [value]="undefined" hidden>Selecciona una opción</option>
+                    <option [value]="area" *ngFor="let area of areas">{{area}}</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success">Hacer pedido</button>
+            </div>
+           
+        </form>
+    </div>
+</div>

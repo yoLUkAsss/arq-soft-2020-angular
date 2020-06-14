@@ -1,0 +1,33 @@
+<div class="card mt-5">
+    <div class="card-body">
+      <h6 class="text-center">
+        Pedidos realizados
+      </h6>
+      <table class="table table-sm table-hover">
+        <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Producto</th>
+              <th scope="col">Medicamento</th>
+              <th scope="col">Fecha</th>
+              <th scope="col">Estado</th>
+            </tr>
+          </thead>
+        <tbody>
+          <tr *ngFor="let pedido of pedidos">
+            <td>{{pedido.id}}</td>
+            <td>{{pedido.producto}}</td>
+            <td>{{pedido.medicamento}}</td>
+            <td>{{pedido.fecha}}</td>
+            <td>{{pedido.estado}}</td>
+            
+            <td>
+              <a class="btn btn-danger text-white">
+                  <i class="fas fa-trash-alt">Eliminar</i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

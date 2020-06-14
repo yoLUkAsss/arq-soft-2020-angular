@@ -9,9 +9,6 @@ export class UsuarioService {
     constructor(private httpClient: HttpClient) {}
 
     async crearUsuario(usuario: Usuario): Promise<any>{
-        return await this.httpClient.post(baseURL+'/users', usuario,
-          {
-            headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('id_token')}`)
-      }).toPromise()
+        return await this.httpClient.post(baseURL + '/insumos/auth/registro', usuario).toPromise()
     }
 }

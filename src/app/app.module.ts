@@ -12,6 +12,9 @@ import { LoginComponent } from './componentes/usuario/login/login.component';
 import { RegistroComponent } from './componentes/usuario/registro/registro.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { InicioComponent } from './componentes/inicio/inicio.component';
+import { CrearPedidoComponent } from './componentes/pedidos/crear-pedido/crear-pedido.component';
+import { ListaPedidosComponent } from './componentes/pedidos/lista-pedidos/lista-pedidos.component';
+import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 /* Servicio */
 import { UsuarioService } from './servicios/usuario.service';
@@ -20,6 +23,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 /* Layout */
 import { ModalClose } from './layouts/modal-close/modal-close.layout';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +31,10 @@ import { ModalClose } from './layouts/modal-close/modal-close.layout';
     RegistroComponent,
     NavbarComponent,
     InicioComponent,
-    ModalClose
+    ModalClose,
+    CrearPedidoComponent,
+    ListaPedidosComponent,
+    PedidosComponent
   ],
   imports: [
     BrowserModule,
@@ -36,6 +43,9 @@ import { ModalClose } from './layouts/modal-close/modal-close.layout';
     ReactiveFormsModule,
     HttpClientModule,
     NgbModule
+  ],
+  exports:[
+    HttpClientModule
   ],
   providers: [UsuarioService],
   bootstrap: [AppComponent]
