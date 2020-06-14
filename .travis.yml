@@ -12,10 +12,6 @@ branches:
   - master
   - develop
 
-cache:
-  directories:
-    - node_modules
-  
 before_script:
 - npm install -g @angular/cli
 - npm install
@@ -23,5 +19,4 @@ before_script:
 script:
 - npm run lint
 - npm run test
-- npm run start
 
