@@ -1,10 +1,15 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import { Router } from '@angular/router';
+import {map} from 'rxjs/operators';
+
 
 // * Modelos **//
 import { Usuario } from '../modelo/usuario';
 import { LoginRequest } from '../modelo/loginRequest';
+import { CrearTicketDTO } from '../modelo/crearTicketDTO';
+import { Pedido } from '../modelo/pedido';
+
 
 export const baseURL = 'http://localhost:4200'
 
@@ -13,11 +18,23 @@ export class UsuarioService {
     constructor(private httpClient: HttpClient, private router: Router ) {}
 
     async crearUsuario(usuario: Usuario): Promise<any>{
-        return await this.httpClient.post(baseURL + '/insumos/auth/registro', usuario).toPromise()
+        return await this.httpClient.post(baseURL + '/insumos/auth/registro', usuario).toPromise();
     }
 
     async login(loginRequest:LoginRequest): Promise<any>{
-        return await this.httpClient.post(baseURL + '/insumos/auth/login', loginRequest).toPromise()
+        return await this.httpClient.post(baseURL + '/insumos/auth/login', loginRequest).toPromise();
+    }
+
+    async crearPedido(ticketDto:CrearTicketDTO): Promise<any> {
+        return await this.httpClient.post(baseURL + '/insumos/ticket/nuevo', ticketDto, {
+            headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+          }).toPromise()    
+    }
+
+    async getPedidos(): Promise<Array<Pedido>> {
+        return await this.httpClient.get<Array<Pedido>>(baseURL + '/insumos/ticket/misTickets', {
+            headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+          }).pipe(map(respuesta => respuesta.map(pedido => Pedido.crearDesdeJson(pedido)))).toPromise();  
     }
 
     estaLogueado():boolean{

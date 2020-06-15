@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -6,31 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-pedidos.component.css']
 })
 export class ListaPedidosComponent implements OnInit {
-  pedido1 = {
-    id: "1",
-    producto: "Respiradores",
-    medicamento: "-",
-    fecha: "13-06-2020",
-    estado: "En proceso"
-  };
-  pedido2 = {
-    id: "2",
-    producto: "Medicamentos",
-    medicamento: "Boquita el mas grande",
-    fecha: "12-06-2020",
-    estado: "Cancelado"
-  };
 
-  pedidos:Array<any> = new Array();
+  pedidos:Array<any>;
   
 
-  constructor() {
-    this.pedidos.push(this.pedido1);
-    this.pedidos.push(this.pedido2);
+  constructor(private usuarioService:UsuarioService) {
   }
 
   ngOnInit(): void {
-
+    this.usuarioService.getPedidos().then(pedidos => this.cuis(pedidos));
   }
 
+  cuis(pedidos){
+    this.pedidos = pedidos;
+    console.log(pedidos)
+  }
 }

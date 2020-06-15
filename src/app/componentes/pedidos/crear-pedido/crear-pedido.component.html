@@ -1,28 +1,28 @@
 <div class="card mt-5">
     <div class="card-body">
-        <form>
+        <form [formGroup]="formularioCrearPedido" (ngSubmit)="crearPedido()">
             <div class="form-group">
                 <label>Seleccioná el insumo que necesitas</label>
-                <select name="insumo" class="form-control" [(ngModel)]="insumoSeleccionado">
+                <select name="insumo" class="form-control" [(ngModel)]="insumoSeleccionado" formControlName="insumo">
                     <option [value]="undefined" hidden>Selecciona una opción</option>
                     <option [value]="insumo" *ngFor="let insumo of insumos">{{insumo}}</option>
                 </select>
             </div>
 
-            <div class="form-group" *ngIf=" insumoSeleccionado == 'Medicamentos' ">
+            <div class="form-group" *ngIf=" insumoSeleccionado == 'Medicamento' ">
                 <label>¿Qué medicamento necesitas?</label>
-                <input class="form-control">
+                <input name="medicamento" formControlName="medicamento" class="form-control">
             </div>
 
             <div class="form-group">
                 <label>Seleccioná el área a la cual es destinada</label>
-                <select name="area" class="form-control">
+                <select name="area" class="form-control" [(ngModel)]="areaSeleccionada" formControlName="area">
                     <option [value]="undefined" hidden>Selecciona una opción</option>
                     <option [value]="area" *ngFor="let area of areas">{{area}}</option>
                 </select>
             </div>
             <div class="form-group">
-                <button type="button" class="btn btn-success">Hacer pedido</button>
+                <button type="submit" class="btn btn-success">Hacer pedido</button>
             </div>
            
         </form>
