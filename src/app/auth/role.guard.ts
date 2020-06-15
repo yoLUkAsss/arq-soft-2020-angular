@@ -1,4 +1,3 @@
-
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 import { UsuarioService } from '../servicios/usuario.service';
@@ -6,7 +5,7 @@ import { UsuarioService } from '../servicios/usuario.service';
 @Injectable({
   providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class RoleGuard implements CanActivate {
 
   constructor(
     private authService: UsuarioService,
@@ -14,7 +13,7 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   canActivate(): boolean {
-    if (!this.authService.estaLogueado() || this.authService.esAdminLogueado()){
+    if (!this.authService.estaLogueado()) {
       this.router.navigate(['/inicio']);
       return false;
     }

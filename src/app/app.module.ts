@@ -23,7 +23,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 /* Layout */
 import { ModalClose } from './layouts/modal-close/modal-close.layout';
 
+/* Guards */
 import { AuthGuard } from './auth/auth.guard';
+import { RoleGuard } from './auth/role.guard';
 
 
 @NgModule({
@@ -49,7 +51,7 @@ import { AuthGuard } from './auth/auth.guard';
   exports:[
     HttpClientModule
   ],
-  providers: [UsuarioService, AuthGuard],
+  providers: [UsuarioService, AuthGuard, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './auth/auth.guard';
+import { RoleGuard } from './auth/role.guard';
 
 //** Components **//
 import {InicioComponent} from "./componentes/inicio/inicio.component";

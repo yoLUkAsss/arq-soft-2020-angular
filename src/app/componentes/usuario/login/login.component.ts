@@ -32,8 +32,11 @@ export class LoginComponent implements OnInit {
 
         await this.usuarioService.login(loginRequest).then(resultado => this.setearRoles(resultado));
 
-        this.router.navigate(['/inicio']);
-
+        if(this.usuarioService.esAdminLogueado())
+          this.router.navigate(['/inicio']);
+        
+        else
+          this.router.navigate(['/pedido']);
       }
     }
     catch (error) {
@@ -58,7 +61,6 @@ export class LoginComponent implements OnInit {
 
   setearRoles(resultado) {
     localStorage.setItem('token', resultado.token);
-    localStorage.setItem('admin', resultado.role);
+    localStorage.setItem('role', resultado.role);
   }
-
 }

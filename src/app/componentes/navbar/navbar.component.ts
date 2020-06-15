@@ -8,20 +8,25 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  logueado:boolean;
+  logueado: boolean;
 
-  constructor(private usuarioService:UsuarioService) { 
+  constructor(private usuarioService: UsuarioService) {
     this.logueado = this.estaLogueado();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void { }
 
-  logout(){
+  logout() {
     this.usuarioService.logout();
     this.logueado = false;
   }
 
-  estaLogueado():boolean{
+  estaLogueado(): boolean {
     return this.usuarioService.estaLogueado();
   }
+
+  esUsuario() {
+    return this.usuarioService.esUsuarioLogueado();
+  }
+
 }

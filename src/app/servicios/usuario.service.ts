@@ -24,17 +24,31 @@ export class UsuarioService {
         return !! localStorage.getItem('token');
     }
 
-    esAdmin(){
-        return !! localStorage.getItem('admin')
+    getRole(){
+        return localStorage.getItem('role')
     }
 
+    esAdminLogueado(){
+        if(this.estaLogueado()){
+            return "ROLE_ADMIN" == this.getRole(); 
+        }
+        return false;
+    }
+
+    esUsuarioLogueado(){
+        if(this.estaLogueado()){
+            return "ROLE_USER" == this.getRole(); 
+        }
+        return false;
+    }
+    
     getToken() {
         return localStorage.getItem('token');
     }
 
     logout() {
         localStorage.removeItem('token');
-        localStorage.removeItem('admin');
+        localStorage.removeItem('role');
         this.router.navigate(['/inicio']);
     }
 }

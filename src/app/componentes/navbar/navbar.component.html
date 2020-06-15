@@ -21,16 +21,16 @@
       </ng-container>
       <ng-template #logueado>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/pedido">Hacer pedido
-          </a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" (click) = "logout()">Salir
           </a>
         </li>
-
       </ng-template>
-      
+      <div class="collapse navbar-collapse" *ngIf="esUsuario()">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/pedido">Hacer pedido
+          </a>
+        </li>
+      </div>
  
     </ul>
   </div>
