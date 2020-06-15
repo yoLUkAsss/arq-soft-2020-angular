@@ -30,17 +30,16 @@ export class LoginComponent implements OnInit {
           this.formularioLogin.get('password').value
         );
 
-        await this.usuarioService.login(loginRequest).then(
-          resultado => localStorage.setItem('token', resultado.token));
-          //localStorage.setItem('role', resultado.role)
-        this.router.navigate(['/pedido']); 
-        
+        await this.usuarioService.login(loginRequest).then(resultado => this.setearRoles(resultado));
+
+        this.router.navigate(['/inicio']);
+
       }
     }
     catch (error) {
       //var errorPantalla: string = error.error.Error;
       console.log(error);
-      this.crearModal('LOGIN', "Falló trolo");
+      this.crearModal('LOGIN', "Falló");
     }
   }
 
@@ -54,8 +53,12 @@ export class LoginComponent implements OnInit {
   crearModal(titulo: string, descripcion: string) {
     const modalInform = this._modalService.open(ModalClose);
     modalInform.componentInstance.title = titulo;
-    modalInform.componentInstance.description = descripcion;  
+    modalInform.componentInstance.description = descripcion;
+  }
 
+  setearRoles(resultado) {
+    localStorage.setItem('token', resultado.token);
+    localStorage.setItem('admin', resultado.role);
   }
 
 }

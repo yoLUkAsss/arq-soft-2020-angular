@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
-import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
+import {HttpClientModule} from '@angular/common/http';
 
 /* Componentes */
 import { AppRoutingModule } from './app-routing.module';
@@ -18,7 +18,6 @@ import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 /* Servicios */
 import { UsuarioService } from './servicios/usuario.service';
-import { TokenInterceptorService } from './servicios/token-interceptor.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Layout */
@@ -50,12 +49,7 @@ import { AuthGuard } from './auth/auth.guard';
   exports:[
     HttpClientModule
   ],
-  providers: [UsuarioService, 
-    AuthGuard/*, {
-      provide: HTTP_INTERCEPTORS,
-      useClass: TokenInterceptorService,
-      multi: true
-    }*/],
+  providers: [UsuarioService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
