@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { CancelarTicketRequest } from 'src/app/modelo/CancelarTicketRequest';
+import { Pedido } from 'src/app/modelo/pedido';
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -7,19 +9,28 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./lista-pedidos.component.css']
 })
 export class ListaPedidosComponent implements OnInit {
-
-  pedidos:Array<any>;
   
+  pedidos:Array<any>;  
 
-  constructor(private usuarioService:UsuarioService) {
-  }
+  constructor(private usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
-    this.usuarioService.getPedidos().then(pedidos => this.cuis(pedidos));
+    this.usuarioService.getPedidos().then(pedidos => this.setearPedido(pedidos));
   }
 
-  cuis(pedidos){
+  setearPedido(pedidos){
     this.pedidos = pedidos;
     console.log(pedidos)
+  }
+
+  async cancelarPedido(id){
+    var ticket:CancelarTicketRequest = new CancelarTicketRequest(id);
+    try{
+      await this.usuarioService.cancelarPedido(ticket);
+    }
+    catch(error){
+      console.log(error);
+    }
+    
   }
 }

@@ -12,12 +12,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let pedido of pedidos">
-     
           <td>{{pedido.insumo.type}} {{pedido.insumo.nombre}}</td>
           <td>
-            <a class="btn btn-danger text-white">
-              <i class="fas fa-trash-alt">Eliminar</i>
-            </a>
+              <button class="fas fa-trash-alt" (click)= "cancelarPedido(pedido.id)">Cancelar</button>
           </td>
         </tr>
       </tbody>

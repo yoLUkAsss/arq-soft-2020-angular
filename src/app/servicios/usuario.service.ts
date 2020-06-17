@@ -9,6 +9,7 @@ import { Usuario } from '../modelo/usuario';
 import { LoginRequest } from '../modelo/loginRequest';
 import { CrearTicketDTO } from '../modelo/crearTicketDTO';
 import { Pedido } from '../modelo/pedido';
+import { CancelarTicketRequest } from '../modelo/CancelarTicketRequest';
 
 
 export const baseURL = 'http://localhost:4200'
@@ -35,6 +36,12 @@ export class UsuarioService {
         return await this.httpClient.get<Array<Pedido>>(baseURL + '/insumos/ticket/misTickets', {
             headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
           }).pipe(map(respuesta => respuesta.map(pedido => Pedido.crearDesdeJson(pedido)))).toPromise();  
+    }
+
+    async cancelarPedido(ticket:CancelarTicketRequest): Promise<any> {
+        return await this.httpClient.post(baseURL + '/insumos/ticket/cancelarTicket', ticket, {
+            headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
+          }).toPromise();  
     }
 
     estaLogueado():boolean{

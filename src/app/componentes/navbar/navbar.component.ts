@@ -8,7 +8,7 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  logueado: boolean;
+  logueado: boolean = false;
 
   constructor(private usuarioService: UsuarioService) {
     this.logueado = this.estaLogueado();

@@ -50,7 +50,7 @@ export class CrearPedidoComponent implements OnInit {
           console.log(ticket);
           
           await this.usuarioService.crearPedido(ticket).then(resultado => console.log(resultado));
-          this.crearModal('Crear pedido', "creo que está todo piola");
+          this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
         else{
           var insumo:Insumo = new Insumo(
@@ -60,7 +60,7 @@ export class CrearPedidoComponent implements OnInit {
           console.log(ticket);
           
           await this.usuarioService.crearPedido(ticket).then(resultado => console.log(resultado));
-          this.crearModal('Crear pedido', "creo que está todo piola");
+          this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
 
       }      
