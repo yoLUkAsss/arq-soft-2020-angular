@@ -32,7 +32,7 @@ export class ListaPedidosComponent implements OnInit {
       try{
         var ticket:CancelarTicketRequest = new CancelarTicketRequest(id);
         await this.usuarioService.cancelarPedido(ticket);
-        //this.usuarioService.getPedidos().then(pedidos => this.setearPedido(pedidos));
+        this.usuarioService.getPedidos().then(pedidos => this.setearPedido(pedidos));
         console.log("entra al try");
       }
       catch(error){
