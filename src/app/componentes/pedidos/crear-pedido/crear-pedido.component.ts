@@ -20,7 +20,7 @@ export class CrearPedidoComponent implements OnInit {
   formularioCrearPedido: FormGroup;
   submitted = false;
   insumoSeleccionado;
-  areaSeleccionada;
+  idAreaSeleccionada:number;
 
   insumos:string[] = [ "Mascara", "Barbijo", "Respirador", "Medicamento", "Guante" ];
   areas:Area[];
@@ -49,14 +49,14 @@ export class CrearPedidoComponent implements OnInit {
             this.formularioCrearPedido.get('insumo').value,
             this.formularioCrearPedido.get('medicamento').value
             );
-          var ticket:CrearTicketDTO = new CrearTicketDTO(medicamento, this.areaSeleccionada.id);
-          await this.usuarioService.crearPedido(ticket);      
+          var ticket:CrearTicketDTO = new CrearTicketDTO(medicamento, this.idAreaSeleccionada);
+          await this.usuarioService.crearPedido(ticket);
+          this.actualizarPedidos();       
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
         else{
-          console.log(this.areaSeleccionada);
           var insumo:Insumo = new Insumo(this.formularioCrearPedido.get('insumo').value);
-          var ticket:CrearTicketDTO = new CrearTicketDTO(insumo, this.areaSeleccionada.id);       
+          var ticket:CrearTicketDTO = new CrearTicketDTO(insumo, this.idAreaSeleccionada);       
           await this.usuarioService.crearPedido(ticket);
           this.actualizarPedidos();          
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
