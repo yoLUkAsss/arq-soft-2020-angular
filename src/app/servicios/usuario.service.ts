@@ -10,6 +10,7 @@ import { LoginRequest } from '../modelo/loginRequest';
 import { CrearTicketDTO } from '../modelo/crearTicketDTO';
 import { Pedido } from '../modelo/pedido';
 import { CancelarTicketRequest } from '../modelo/CancelarTicketRequest';
+import { Area } from '../modelo/area';
 
 
 export const baseURL = 'http://localhost:4200'
@@ -42,6 +43,11 @@ export class UsuarioService {
         return await this.httpClient.post(baseURL + '/insumos/ticket/cancelarTicket', ticket, {
             headers: new HttpHeaders().set('Authorization', `Bearer ${localStorage.getItem('token')}`)
           }).toPromise();  
+    }
+
+    async getAreas():Promise<Array<Area>>{
+        return await this.httpClient.get<Array<Area>>(baseURL + '/insumos/ticket/areas')
+            .pipe(map(respuesta => respuesta.map(area => Area.crearDesdeJson(area)))).toPromise();  
     }
 
     estaLogueado():boolean{

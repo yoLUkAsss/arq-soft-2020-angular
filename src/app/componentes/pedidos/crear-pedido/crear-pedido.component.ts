@@ -8,6 +8,7 @@ import { CrearTicketDTO } from 'src/app/modelo/crearTicketDTO';
 import { Insumo } from 'src/app/modelo/insumo';
 import { Medicamento } from 'src/app/modelo/medicamento';
 import { Pedido } from 'src/app/modelo/pedido';
+import { Area } from 'src/app/modelo/area';
 
 @Component({
   selector: 'app-crear-pedido',
@@ -22,7 +23,7 @@ export class CrearPedidoComponent implements OnInit {
   areaSeleccionada;
 
   insumos:string[] = [ "Mascara", "Barbijo", "Respirador", "Medicamento", "Guante" ];
-  areas:string[] = [ "Atención de pacientes", "Terapia Intensiva", "Técnicos" ];
+  areas:Area[];
 
   @Output() mensaje = new EventEmitter<Pedido[]>();
 
@@ -36,6 +37,7 @@ export class CrearPedidoComponent implements OnInit {
       area:new FormControl(""),
       medicamento:new FormControl("")
     });
+    this.usuarioService.getAreas().then(areas => this.areas = areas);
   }
 
   async crearPedido(): Promise<void>{
@@ -47,13 +49,14 @@ export class CrearPedidoComponent implements OnInit {
             this.formularioCrearPedido.get('insumo').value,
             this.formularioCrearPedido.get('medicamento').value
             );
-          var ticket:CrearTicketDTO = new CrearTicketDTO(medicamento);
+          var ticket:CrearTicketDTO = new CrearTicketDTO(medicamento, this.areaSeleccionada.id);
           await this.usuarioService.crearPedido(ticket);      
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
         else{
+          console.log(this.areaSeleccionada);
           var insumo:Insumo = new Insumo(this.formularioCrearPedido.get('insumo').value);
-          var ticket:CrearTicketDTO = new CrearTicketDTO(insumo);       
+          var ticket:CrearTicketDTO = new CrearTicketDTO(insumo, this.areaSeleccionada.id);       
           await this.usuarioService.crearPedido(ticket);
           this.actualizarPedidos();          
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");

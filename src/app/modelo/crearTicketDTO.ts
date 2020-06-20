@@ -2,8 +2,10 @@ import { Insumo } from './insumo';
 
 export class CrearTicketDTO{
    insumo;
+   idArea;
 
-    constructor(insumo){
+    constructor(insumo, idArea){
         this.insumo = insumo;
+        this.idArea = idArea;
     }
 }

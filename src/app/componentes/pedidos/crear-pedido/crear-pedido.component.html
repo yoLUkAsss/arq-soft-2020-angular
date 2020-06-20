@@ -18,7 +18,7 @@
                 <label>Seleccioná el área a la cual es destinada</label>
                 <select name="area" class="form-control" [(ngModel)]="areaSeleccionada" formControlName="area">
                     <option [value]="undefined" hidden>Selecciona una opción</option>
-                    <option [value]="area" *ngFor="let area of areas">{{area}}</option>
+                    <option [value]="area" *ngFor="let area of areas">{{area.nombre}}</option>
                 </select>
             </div>
             <div class="form-group">
