@@ -66,7 +66,6 @@ export class RegistroComponent implements OnInit {
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
     this.router.navigate(['/inicio']);
-
   }
 }
 

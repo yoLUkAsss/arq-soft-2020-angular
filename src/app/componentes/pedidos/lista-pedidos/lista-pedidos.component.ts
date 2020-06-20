@@ -28,21 +28,16 @@ export class ListaPedidosComponent implements OnInit {
   }
 
   async cancelarPedido(id:number):Promise<any> {
-    console.log(id);
-
       try{
         var ticket:CancelarTicketRequest = new CancelarTicketRequest(id);
         await this.usuarioService.cancelarPedido(ticket);
         this.usuarioService.getPedidos().then(pedidos => this.setearPedido(pedidos));
-        this.crearModal('Cancelación pedido', 'El pedido se ha cancelado satistfactoriamente');
-        
+        this.crearModal('Cancelación pedido', 'El pedido se ha cancelado satistfactoriamente');     
       }
       catch(error){
         console.log(error);
         this.crearModal('Cancelación pedido', 'No se pudo cancelar el pedido. Intente nuevamente mas tarde');
       }
-
-    
   }
 
   async cancelarPedidoFuncion(ticket){
@@ -53,7 +48,5 @@ export class ListaPedidosComponent implements OnInit {
     const modalInform = this.modalService.open(ModalClose);
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
-    
-
   }
 }
