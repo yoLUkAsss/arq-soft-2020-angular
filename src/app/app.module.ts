@@ -20,12 +20,13 @@ import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 import { UsuarioService } from './servicios/usuario.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-/* Layout */
+/* Modals */
 import { ModalClose } from './layouts/modal-close/modal-close.layout';
 
 /* Guards */
 import { AuthGuard } from './auth/auth.guard';
 import { RoleGuard } from './auth/role.guard';
+import { ModalConfirmacionComponent } from './componentes/modal-confirmacion/modal-confirmacion.component';
 
 
 @NgModule({
@@ -36,9 +37,11 @@ import { RoleGuard } from './auth/role.guard';
     NavbarComponent,
     InicioComponent,
     ModalClose,
+    ModalConfirmacionComponent,
     CrearPedidoComponent,
     ListaPedidosComponent,
-    PedidosComponent
+    PedidosComponent,
+    ModalConfirmacionComponent
   ],
   imports: [
     BrowserModule,

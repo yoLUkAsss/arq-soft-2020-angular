@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
@@ -7,6 +7,7 @@ import { ModalClose } from 'src/app/layouts/modal-close/modal-close.layout';
 import { CrearTicketDTO } from 'src/app/modelo/crearTicketDTO';
 import { Insumo } from 'src/app/modelo/insumo';
 import { Medicamento } from 'src/app/modelo/medicamento';
+import { Pedido } from 'src/app/modelo/pedido';
 
 @Component({
   selector: 'app-crear-pedido',
@@ -22,7 +23,8 @@ export class CrearPedidoComponent implements OnInit {
 
   insumos:string[] = [ "Mascara", "Barbijo", "Respirador", "Medicamento", "Guante" ];
   areas:string[] = [ "Atención de pacientes", "Terapia Intensiva", "Técnicos" ];
-  
+
+  @Output() mensaje = new EventEmitter<Pedido[]>();
 
   constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService: UsuarioService, private _modalService: NgbModal) { }
 
@@ -38,7 +40,6 @@ export class CrearPedidoComponent implements OnInit {
 
   async crearPedido(): Promise<void>{
     this.submitted = true;
-    console.log(this.formularioCrearPedido.get('medicamento').value);
     try{
       if(this.formularioCrearPedido.valid){
         if('Medicamento' == this.insumoSeleccionado){
@@ -47,22 +48,16 @@ export class CrearPedidoComponent implements OnInit {
             this.formularioCrearPedido.get('medicamento').value
             );
           var ticket:CrearTicketDTO = new CrearTicketDTO(medicamento);
-          console.log(ticket);
-          
-          await this.usuarioService.crearPedido(ticket).then(resultado => console.log(resultado));
+          await this.usuarioService.crearPedido(ticket);      
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
         else{
-          var insumo:Insumo = new Insumo(
-            this.formularioCrearPedido.get('insumo').value
-            );
-          var ticket:CrearTicketDTO = new CrearTicketDTO(insumo);
-          console.log(ticket);
-          
-          await this.usuarioService.crearPedido(ticket).then(resultado => console.log(resultado));
+          var insumo:Insumo = new Insumo(this.formularioCrearPedido.get('insumo').value);
+          var ticket:CrearTicketDTO = new CrearTicketDTO(insumo);       
+          await this.usuarioService.crearPedido(ticket);
+          this.actualizarPedidos();          
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
-
       }      
     }
     catch(error){
@@ -77,4 +72,8 @@ export class CrearPedidoComponent implements OnInit {
     modalInform.componentInstance.description = descripcion;
   }
 
+  actualizarPedidos(){
+    this.usuarioService.getPedidos().then(resultado =>this.mensaje.emit(resultado));
+  }
+  
 }
