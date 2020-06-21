@@ -74,7 +74,7 @@ export class CrearPedidoComponent implements OnInit {
     }
     this.formularioCrearPedido= this.formBuilder.group({
       insumo:['1', Validators.required],
-      area:['2', Validators.required],
+      area:['1', Validators.required],
       medicamento:new FormControl("")
     });
   }
