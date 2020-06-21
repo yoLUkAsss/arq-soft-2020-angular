@@ -33,8 +33,8 @@ export class CrearPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.formularioCrearPedido = this.formBuilder.group({
-      insumo:new FormControl(this.insumoSeleccionado),
-      area:new FormControl(""),
+      insumo:['', Validators.required],
+      area:['', Validators.required],
       medicamento:new FormControl("")
     });
     this.usuarioService.getAreas().then(areas => this.areas = areas);
@@ -42,6 +42,9 @@ export class CrearPedidoComponent implements OnInit {
 
   async crearPedido(): Promise<void>{
     this.submitted = true;
+    if('Medicamento' == this.insumoSeleccionado)
+      this.formularioCrearPedido.addControl('medicamento', new FormControl("", Validators.required));
+    
     try{
       if(this.formularioCrearPedido.valid){
         if('Medicamento' == this.insumoSeleccionado){
@@ -55,6 +58,7 @@ export class CrearPedidoComponent implements OnInit {
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
         else{
+          this.formularioCrearPedido.removeControl('medicamento')
           var insumo:Insumo = new Insumo(this.formularioCrearPedido.get('insumo').value);
           var ticket:CrearTicketDTO = new CrearTicketDTO(insumo, this.idAreaSeleccionada);       
           await this.usuarioService.crearPedido(ticket);
