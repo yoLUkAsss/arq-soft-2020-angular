@@ -21,15 +21,16 @@ import { UsuarioService } from './servicios/usuario.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Modals */
-import { ModalClose } from './layouts/modal-close/modal-close.layout';
+import { ModalClose } from './componentes/modals/modal-close/modal-close.layout';
 
 /* Guards */
 import { AuthGuard } from './auth/auth.guard';
 import { RoleGuard } from './auth/role.guard';
-import { ModalConfirmacionComponent } from './componentes/modal-confirmacion/modal-confirmacion.component';
+import { ModalConfirmacionComponent } from './componentes/modals/modal-confirmacion/modal-confirmacion.component';
 
 /* Externals */
 import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalListComponent } from './componentes/modals/modal-list/modal-list.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     CrearPedidoComponent,
     ListaPedidosComponent,
     PedidosComponent,
-    ModalConfirmacionComponent
+    ModalConfirmacionComponent,
+    ModalListComponent
   ],
   imports: [
     BrowserModule,

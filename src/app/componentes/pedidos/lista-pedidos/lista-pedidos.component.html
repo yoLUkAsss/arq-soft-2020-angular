@@ -16,9 +16,13 @@
           <td>{{pedido.insumo.type}} {{pedido.insumo.nombre}}</td>
           <td>{{pedido.estados[0].type}}</td>
           <td>{{pedido.area.nombre}}</td>
+          <td>
+            <button type="button" class="btn btn-link" (click)= "historialDeEstados(pedido.estados)">Info</button>
+        </td>
           <td *ngIf="pedido.estados[0].type != 'Cancelado'">
               <button type="button" class="btn btn-danger" (click)= "cancelarPedido(pedido.id)">Cancelar</button>
           </td>
+
           
         </tr>
       </tbody>

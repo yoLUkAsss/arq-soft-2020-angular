@@ -3,8 +3,9 @@ import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { CancelarTicketRequest } from 'src/app/modelo/CancelarTicketRequest';
 import { Pedido } from 'src/app/modelo/pedido';
 import { NgbModal, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
-import { ModalConfirmacionComponent } from '../../modal-confirmacion/modal-confirmacion.component';
-import { ModalClose } from 'src/app/layouts/modal-close/modal-close.layout';
+import { ModalClose } from '../../modals/modal-close/modal-close.layout';
+import { ModalListComponent } from '../../modals/modal-list/modal-list.component';
+
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -49,5 +50,10 @@ export class ListaPedidosComponent implements OnInit {
     const modalInform = this.modalService.open(ModalClose);
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
+  }
+
+  historialDeEstados(listaEstados){
+    const modalList = this.modalService.open(ModalListComponent);
+    modalList.componentInstance.estados = listaEstados;
   }
 }
