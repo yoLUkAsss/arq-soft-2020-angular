@@ -3,12 +3,12 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalClose } from 'src/app/layouts/modal-close/modal-close.layout';
 import { CrearTicketDTO } from 'src/app/modelo/crearTicketDTO';
 import { Insumo } from 'src/app/modelo/insumo';
 import { Medicamento } from 'src/app/modelo/medicamento';
 import { Pedido } from 'src/app/modelo/pedido';
 import { Area } from 'src/app/modelo/area';
+import { ModalClose } from '../../modals/modal-close/modal-close.layout';
 
 @Component({
   selector: 'app-crear-pedido',

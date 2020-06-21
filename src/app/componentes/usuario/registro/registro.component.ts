@@ -5,7 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../validaciones/must-match.validator';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalClose } from 'src/app/layouts/modal-close/modal-close.layout';
+import { ModalClose } from '../../modals/modal-close/modal-close.layout';
+
 
 @Component({
   selector: 'app-registro',
