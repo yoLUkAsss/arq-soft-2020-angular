@@ -12,8 +12,8 @@ import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 
 const routes: Routes = [  
-  {path: '', component:InicioComponent},
-  {path: 'inicio', component:InicioComponent},
+  {path: '', component:LoginComponent},
+  {path: 'inicio', component:LoginComponent},
   {path: 'registro', component:RegistroComponent},
   {path: 'login', component:LoginComponent},
   {path: 'pedido', component:PedidosComponent, canActivate: [AuthGuard]},
