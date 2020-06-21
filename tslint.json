@@ -1,11 +1,23 @@
 {
   "extends": "tslint:recommended",
-  "rules": {
-    "align": {
-      "options": [
-        "parameters",
-        "statements"
-      ]
+  "rules": {    
+    "quotemark": false,
+    "indent": [true, "spaces", 2],
+    "interface-name": false,
+    "ordered-imports": false,
+    "object-literal-sort-keys": false,
+    "no-consecutive-blank-lines": false,
+    "whitespace": false,
+    "typedef-whitespace": false,
+    "no-trailing-whitespace": false,
+    "no-irregular-whitespace": false,
+    "space-before-function-paren": false,
+    "space-within-parens":false,
+    "prefer-const":false,
+    "max-line-length":false,
+    "comment-format":false,
+    "member-access":false,
+    "arrow-parens":false
     },
     "array-type": false,
     "arrow-return-shorthand": true,
@@ -36,7 +48,7 @@
     "import-spacing": true,
     "indent": {
       "options": [
-        
+        "spaces"
       ]
     },
     "max-classes-per-file": false,
@@ -85,11 +97,47 @@
         "always"
       ]
     },
+    "space-before-function-paren": {
+      "options": {
+        "anonymous": "never",
+        "asyncArrow": "always",
+        "constructor": "never",
+        "method": "never",
+        "named": "never"
+      }
+    },
+    "typedef-whitespace": {
+      "options": [
+        {
+          "call-signature": "nospace",
+          "index-signature": "nospace",
+          "parameter": "nospace",
+          "property-declaration": "nospace",
+          "variable-declaration": "nospace"
+        },
+        {
+          "call-signature": "onespace",
+          "index-signature": "onespace",
+          "parameter": "onespace",
+          "property-declaration": "onespace",
+          "variable-declaration": "onespace"
+        }
+      ]
+    },
     "variable-name": {
       "options": [
         "ban-keywords",
         "check-format",
         "allow-pascal-case"
+      ]
+    },
+    "whitespace": {
+      "options": [
+        "check-branch",
+        "check-decl",
+        "check-operator",
+        "check-separator",
+        "check-typecast"
       ]
     },
     "no-conflicting-lifecycle": true,
