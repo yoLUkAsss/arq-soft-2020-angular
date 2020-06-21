@@ -9,7 +9,7 @@ import { Usuario } from '../modelo/usuario';
 import { LoginRequest } from '../modelo/loginRequest';
 import { CrearTicketDTO } from '../modelo/crearTicketDTO';
 import { Pedido } from '../modelo/pedido';
-import { CancelarTicketRequest } from '../modelo/CancelarTicketRequest';
+import { CancelarTicketRequest } from '../modelo/cancelarTicketRequest';
 import { Area } from '../modelo/area';
 
 
