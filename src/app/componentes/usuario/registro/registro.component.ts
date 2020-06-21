@@ -16,7 +16,6 @@ export class RegistroComponent implements OnInit {
   formularioRegistro: FormGroup;
   submitted = false;
   
-
   constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService:UsuarioService, private _modalService: NgbModal) {}
 
   get f() { return this.formularioRegistro.controls; }

@@ -13,7 +13,8 @@ import { ModalClose } from 'src/app/layouts/modal-close/modal-close.layout';
 })
 export class ListaPedidosComponent implements OnInit {
   
-  @Input() pedidos:Pedido[];  
+  @Input() pedidos:Pedido[]; 
+  paginaActual:number = 1; 
   modalOptions: NgbModalOptions;
 
   constructor(private usuarioService:UsuarioService, private modalService: NgbModal) { }

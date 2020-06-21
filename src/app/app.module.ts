@@ -28,6 +28,9 @@ import { AuthGuard } from './auth/auth.guard';
 import { RoleGuard } from './auth/role.guard';
 import { ModalConfirmacionComponent } from './componentes/modal-confirmacion/modal-confirmacion.component';
 
+/* Externals */
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 @NgModule({
   declarations: [
@@ -49,7 +52,8 @@ import { ModalConfirmacionComponent } from './componentes/modal-confirmacion/mod
     FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
   ],
   exports:[
     HttpClientModule

@@ -12,7 +12,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pedido of pedidos">
+        <tr *ngFor="let pedido of pedidos | paginate: {itemsPerPage:4, currentPage: paginaActual}">
           <td>{{pedido.insumo.type}} {{pedido.insumo.nombre}}</td>
           <td>{{pedido.estados[0].type}}</td>
           <td>{{pedido.area.nombre}}</td>
@@ -23,5 +23,6 @@
         </tr>
       </tbody>
     </table>
+    <pagination-controls (pageChange)="paginaActual = $event"></pagination-controls>
   </div>
 </div>
