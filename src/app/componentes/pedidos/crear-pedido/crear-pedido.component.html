@@ -4,7 +4,7 @@
             <div class="form-group">
                 <label>Seleccioná el insumo que necesitas</label>
                 <select name="insumo" class="form-control" [(ngModel)]="insumoSeleccionado" formControlName="insumo" [ngClass]="{ 'is-invalid': submitted && f.insumo.errors }">
-                    <option [value]="undefined" hidden>Selecciona una opción</option>
+                    <option [value]="1" hidden>Selecciona una opción</option>
                     <option [value]="insumo" *ngFor="let insumo of insumos">{{insumo}}</option>
                 </select>
             </div>
@@ -17,7 +17,7 @@
             <div class="form-group">
                 <label>Seleccioná el área a la cual es destinada</label>
                 <select name="area" class="form-control" [(ngModel)]="idAreaSeleccionada" formControlName="area" [ngClass]="{ 'is-invalid': submitted && f.area.errors }">
-                    <option [value]="undefined" hidden>Selecciona una opción</option>
+                    <option [value]="1" hidden>Selecciona una opción</option>
                     <option [value]="area.id" *ngFor="let area of areas">{{area.nombre}}</option>
                 </select>
             </div>

@@ -73,8 +73,8 @@ export class CrearPedidoComponent implements OnInit {
       this.crearModal('Crear pedido', "Falló");
     }
     this.formularioCrearPedido= this.formBuilder.group({
-      insumo:['seleccione', Validators.required],
-      area:['seleccione', Validators.required],
+      insumo:['1', Validators.required],
+      area:['1', Validators.required],
       medicamento:new FormControl("")
     });
   }
