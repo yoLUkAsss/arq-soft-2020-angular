@@ -33,8 +33,8 @@ export class CrearPedidoComponent implements OnInit {
 
   ngOnInit(): void {
     this.formularioCrearPedido = this.formBuilder.group({
-      insumo:['', Validators.required],
-      area:['', Validators.required],
+      insumo:["", Validators.required],
+      area:["", Validators.required],
       medicamento:new FormControl("")
     });
     this.usuarioService.getAreas().then(areas => this.areas = areas);
