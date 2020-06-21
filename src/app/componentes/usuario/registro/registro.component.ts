@@ -5,7 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../validaciones/must-match.validator';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalCloseComponent } from 'src/app/layouts/modal-close/modal-close.layout';
+import { ModalClose } from '../../modals/modal-close/modal-close.layout';
+
 
 @Component({
   selector: 'app-registro',
@@ -15,13 +16,8 @@ import { ModalCloseComponent } from 'src/app/layouts/modal-close/modal-close.lay
 export class RegistroComponent implements OnInit {
   formularioRegistro: FormGroup;
   submitted = false;
-
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private usuarioService: UsuarioService,
-    private modalService: NgbModal
-  ) {}
+  
+  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService:UsuarioService, private _modalService: NgbModal) {}
 
   get f() { return this.formularioRegistro.controls; }
 
@@ -38,13 +34,15 @@ export class RegistroComponent implements OnInit {
           this.formularioRegistro.get('localidad').value,
           this.formularioRegistro.get('password').value
         );
+        
         await this.usuarioService.crearUsuario(usuario);
         this.crearModal('Alta de usuario', 'El usuario se ha dado de alta satistfactoriamente');
-
+        this.router.navigate(['/login']); 
       }
     } catch (error) {
-        console.log(error.error);
-        this.crearModal('Alta de usuario', 'No se ha podido crear el nuevo usuario, intente nuevamente mas tarde');
+        var errorPantalla:string = error.error.Error;
+        console.log(errorPantalla);
+        this.crearModal('Alta de usuario', errorPantalla);
     }
   }
 
@@ -68,7 +66,6 @@ export class RegistroComponent implements OnInit {
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
     this.router.navigate(['/inicio']);
-
   }
 }
 

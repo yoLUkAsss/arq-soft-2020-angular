@@ -1,4 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { UsuarioService } from 'src/app/servicios/usuario.service';
+import { CancelarTicketRequest } from 'src/app/modelo/CancelarTicketRequest';
+import { Pedido } from 'src/app/modelo/pedido';
+import { NgbModal, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
+import { ModalClose } from '../../modals/modal-close/modal-close.layout';
+import { ModalListComponent } from '../../modals/modal-list/modal-list.component';
+
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -6,30 +13,47 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./lista-pedidos.component.css']
 })
 export class ListaPedidosComponent implements OnInit {
-  pedido1 = {
-    id: '1',
-    producto: 'Respiradores',
-    medicamento: '-',
-    fecha: '13-06-2020',
-    estado: 'En proceso'
-  };
-  pedido2 = {
-    id: '2',
-    producto: 'Medicamentos',
-    medicamento: 'Boquita el mas grande',
-    fecha: '12-06-2020',
-    estado: 'Cancelado'
-  };
+  
+  @Input() pedidos:Pedido[]; 
+  paginaActual:number = 1; 
+  modalOptions: NgbModalOptions;
 
-  pedidos: Array<any> = new Array();
-
-  constructor() {
-    this.pedidos.push(this.pedido1);
-    this.pedidos.push(this.pedido2);
-  }
+  constructor(private usuarioService:UsuarioService, private modalService: NgbModal) { }
 
   ngOnInit(): void {
-
+    this.usuarioService.getPedidos().then(pedidos => this.setearPedido(pedidos));
   }
 
+  setearPedido(pedidos){
+    this.pedidos = pedidos;
+    //console.log(pedidos)
+  }
+
+  async cancelarPedido(id:number):Promise<any> {
+      try{
+        var ticket:CancelarTicketRequest = new CancelarTicketRequest(id);
+        await this.usuarioService.cancelarPedido(ticket);
+        this.usuarioService.getPedidos().then(pedidos => this.setearPedido(pedidos));
+        this.crearModal('Cancelación pedido', 'El pedido se ha cancelado satistfactoriamente');     
+      }
+      catch(error){
+        console.log(error);
+        this.crearModal('Cancelación pedido', 'No se pudo cancelar el pedido. Intente nuevamente mas tarde');
+      }
+  }
+
+  async cancelarPedidoFuncion(ticket){
+    await this.usuarioService.cancelarPedido(ticket);
+  }
+
+  crearModal(titulo:string, descripcion:string){
+    const modalInform = this.modalService.open(ModalClose);
+    modalInform.componentInstance.title = titulo;
+    modalInform.componentInstance.description = descripcion;
+  }
+
+  historialDeEstados(listaEstados){
+    const modalList = this.modalService.open(ModalListComponent);
+    modalList.componentInstance.estados = listaEstados;
+  }
 }

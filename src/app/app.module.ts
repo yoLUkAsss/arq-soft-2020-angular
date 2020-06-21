@@ -16,12 +16,22 @@ import { CrearPedidoComponent } from './componentes/pedidos/crear-pedido/crear-p
 import { ListaPedidosComponent } from './componentes/pedidos/lista-pedidos/lista-pedidos.component';
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
-/* Servicio */
+/* Servicios */
 import { UsuarioService } from './servicios/usuario.service';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-/* Layout */
-import { ModalCloseComponent } from './layouts/modal-close/modal-close.layout';
+/* Modals */
+import { ModalClose } from './componentes/modals/modal-close/modal-close.layout';
+
+/* Guards */
+import { AuthGuard } from './auth/auth.guard';
+import { RoleGuard } from './auth/role.guard';
+import { ModalConfirmacionComponent } from './componentes/modals/modal-confirmacion/modal-confirmacion.component';
+
+/* Externals */
+import { NgxPaginationModule } from 'ngx-pagination';
+import { ModalListComponent } from './componentes/modals/modal-list/modal-list.component';
+
 
 @NgModule({
   declarations: [
@@ -30,10 +40,13 @@ import { ModalCloseComponent } from './layouts/modal-close/modal-close.layout';
     RegistroComponent,
     NavbarComponent,
     InicioComponent,
-    ModalCloseComponent,
+    ModalClose,
+    ModalConfirmacionComponent,
     CrearPedidoComponent,
     ListaPedidosComponent,
-    PedidosComponent
+    PedidosComponent,
+    ModalConfirmacionComponent,
+    ModalListComponent
   ],
   imports: [
     BrowserModule,
@@ -41,12 +54,13 @@ import { ModalCloseComponent } from './layouts/modal-close/modal-close.layout';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    NgxPaginationModule
   ],
   exports: [
     HttpClientModule
   ],
-  providers: [UsuarioService],
+  providers: [UsuarioService, AuthGuard, RoleGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

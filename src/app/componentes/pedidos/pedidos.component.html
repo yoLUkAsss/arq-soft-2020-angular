@@ -1,10 +1,10 @@
-<p>pedidos works!</p><div class="container">
+<div class="container">
     <div class="row">
-      <div class="col-md-5">
-        <app-crear-pedido></app-crear-pedido>
+      <div class="col-md-4">
+        <app-crear-pedido (mensaje)= "mensajeParaListado($event)"></app-crear-pedido>
       </div>
-      <div class="col-md-7">
-        <app-lista-pedidos></app-lista-pedidos>
+      <div class="col-md-8">
+        <app-lista-pedidos [pedidos] = "enviarAListado"></app-lista-pedidos>
       </div>
     </div>
   </div>
