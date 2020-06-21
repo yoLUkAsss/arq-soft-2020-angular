@@ -65,7 +65,8 @@ export class CrearPedidoComponent implements OnInit {
           this.actualizarPedidos();          
           this.crearModal('Crear pedido', "El pedido se ha creado de forma satisfactoria");
         }
-      }      
+      } 
+      
     }
     catch(error){
       console.log(error);
