@@ -17,13 +17,15 @@
           <td>{{pedido.estados[0].type}}</td>
           <td>{{pedido.area.nombre}}</td>
           <td>
-            <button type="button" class="btn btn-link" (click)= "historialDeEstados(pedido.estados)">Info</button>
-        </td>
-          <td *ngIf="pedido.estados[0].type != 'Cancelado'">
-              <button type="button" class="btn btn-danger" (click)= "cancelarPedido(pedido.id)">Cancelar</button>
+            <div (click)="historialDeEstados(pedido.estados)">
+              <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
           </td>
-
-          
+          <td *ngIf="pedido.estados[0].type != 'Cancelado'">
+            <div (click)="cancelarPedido(pedido.id)">
+              <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+          </td>
         </tr>
       </tbody>
     </table>
