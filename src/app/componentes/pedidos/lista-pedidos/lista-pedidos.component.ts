@@ -4,7 +4,7 @@ import { Pedido } from 'src/app/modelo/pedido';
 import { NgbModal, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
 import { ModalClose } from '../../modals/modal-close/modal-close.layout';
 import { ModalListComponent } from '../../modals/modal-list/modal-list.component';
-import { CancelarTicketRequest } from 'src/app/modelo/CancelarTicketRequest';
+import { CancelarTicketRequest } from 'src/app/modelo/cancelarTicketRequest';
 
 
 @Component({
