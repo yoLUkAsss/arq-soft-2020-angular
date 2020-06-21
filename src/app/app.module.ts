@@ -17,7 +17,7 @@ import { ListaPedidosComponent } from './componentes/pedidos/lista-pedidos/lista
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 /* Servicios */
-import { UsuarioService } from './servicios/usuario.service';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Modals */
@@ -31,6 +31,8 @@ import { ModalConfirmacionComponent } from './componentes/modals/modal-confirmac
 /* Externals */
 import { NgxPaginationModule } from 'ngx-pagination';
 import { ModalListComponent } from './componentes/modals/modal-list/modal-list.component';
+
+import { UsuarioService } from './servicios/usuario.service';
 
 
 @NgModule({

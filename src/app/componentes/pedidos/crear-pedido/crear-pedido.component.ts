@@ -8,7 +8,7 @@ import { Insumo } from 'src/app/modelo/insumo';
 import { Medicamento } from 'src/app/modelo/medicamento';
 import { Pedido } from 'src/app/modelo/pedido';
 import { Area } from 'src/app/modelo/area';
-import { ModalClose } from '../../modals/modal-close/modal-close.layout';
+import { ModalClose} from '../../modals/modal-close/modal-close.layout';
 
 @Component({
   selector: 'app-crear-pedido',

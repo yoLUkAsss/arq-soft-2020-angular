@@ -3,13 +3,11 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "serve": "ng serve --proxy-config proxy.conf.json",
+    "start": "ng serve --proxy-config proxy.conf.json",
     "build": "ng build",
-    "test": "ng test --watch=false --browsers=ChromeHeadless",
+    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "postinstall": "ng build --prod",
-    "start": "node server.js"
+    "e2e": "ng e2e"
   },
   "private": true,
   "dependencies": {
@@ -24,7 +22,6 @@
     "@angular/router": "~9.1.4",
     "@ng-bootstrap/ng-bootstrap": "^6.1.0",
     "bootstrap": "^4.4.1",
-    "express": "^4.17.1",
     "jquery": "^3.5.1",
     "ngx-pagination": "^5.0.0",
     "popper.js": "^1.16.1",
@@ -53,9 +50,5 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~3.8.3"
-  },
-  "engines": {
-    "node": "10.14.2",
-    "npm": "6.4.1"
   }
 }

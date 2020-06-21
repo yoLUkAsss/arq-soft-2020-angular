@@ -17,7 +17,7 @@ export class RegistroComponent implements OnInit {
   formularioRegistro: FormGroup;
   submitted = false;
   
-  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService:UsuarioService, private _modalService: NgbModal) {}
+  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService:UsuarioService, private modalService: NgbModal) {}
 
   get f() { return this.formularioRegistro.controls; }
 
@@ -62,7 +62,7 @@ export class RegistroComponent implements OnInit {
   }
 
   crearModal(titulo: string, descripcion: string){
-    const modalInform = this.modalService.open(ModalCloseComponent);
+    const modalInform = this.modalService.open(ModalClose);
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
     this.router.navigate(['/inicio']);
