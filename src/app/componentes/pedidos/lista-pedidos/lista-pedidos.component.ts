@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Pedido } from 'src/app/modelo/pedido';
-import { NgbModal, NgbModalOptions } from "@ng-bootstrap/ng-bootstrap";
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ModalClose } from '../../modals/modal-close/modal-close.layout';
 import { ModalListComponent } from '../../modals/modal-list/modal-list.component';
 import { CancelarTicketRequest } from 'src/app/modelo/cancelarTicketRequest';
@@ -26,7 +26,7 @@ export class ListaPedidosComponent implements OnInit {
 
   setearPedido(pedidos){
     this.pedidos = pedidos;
-    //console.log(pedidos)
+    // console.log(pedidos)
   }
 
   async cancelarPedido(id:number):Promise<any> {

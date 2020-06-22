@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     try {
       if (this.formularioLogin.valid) {
-        let loginRequest: LoginRequest = new LoginRequest(
+        const loginRequest: LoginRequest = new LoginRequest(
           this.formularioLogin.get('email').value,
           this.formularioLogin.get('password').value
         );
