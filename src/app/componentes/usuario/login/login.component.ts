@@ -17,7 +17,8 @@ export class LoginComponent implements OnInit {
   formularioLogin: FormGroup;
   submitted = false;
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService: UsuarioService, private _modalService: NgbModal) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService: UsuarioService, 
+    private _modalService: NgbModal) { }
 
   get f() { return this.formularioLogin.controls; }
 

@@ -60,14 +60,14 @@ export class UsuarioService {
 
     esAdminLogueado(){
         if(this.estaLogueado()){
-            return 'ROLE_ADMIN' == this.getRole(); 
+            return 'ROLE_ADMIN' === this.getRole(); 
         }
         return false;
     }
 
     esUsuarioLogueado(){
         if(this.estaLogueado()){
-            return 'ROLE_USER' == this.getRole(); 
+            return 'ROLE_USER' === this.getRole(); 
         }
         return false;
     }

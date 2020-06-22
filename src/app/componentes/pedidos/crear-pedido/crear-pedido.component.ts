@@ -27,7 +27,8 @@ export class CrearPedidoComponent implements OnInit {
 
   @Output() mensaje = new EventEmitter<Pedido[]>();
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService: UsuarioService, private _modalService: NgbModal) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private usuarioService: UsuarioService, 
+    private _modalService: NgbModal) { }
 
   get f() { return this.formularioCrearPedido.controls;}
 
@@ -42,8 +43,10 @@ export class CrearPedidoComponent implements OnInit {
 
   async crearPedido(): Promise<void>{
     this.submitted = true;
-    if('Medicamento' == this.insumoSeleccionado)
+    if('Medicamento' == this.insumoSeleccionado){
       this.formularioCrearPedido.addControl('medicamento', new FormControl('', Validators.required));
+    }
+      
     
     try{
       if(this.formularioCrearPedido.valid){

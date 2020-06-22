@@ -21,7 +21,8 @@ export class Pedido{
     }
 
     static crearDesdeJson(json:any): Pedido{
-        const ticket = new Pedido(json.cliente.email, json.insumo, Area.crearDesdeJson(json.area), json.estados.map(estado => Estado.crearDesdeJson(estado)));
+        const ticket = new Pedido(json.cliente.email, json.insumo, Area.crearDesdeJson(json.area), 
+                                json.estados.map(estado => Estado.crearDesdeJson(estado)));
         ticket.setId(json.id);
         return ticket;
       }
