@@ -80,6 +80,7 @@
       true,
       "single"
     ],
+    "no-trailing-whitespace": true
     "space-before-function-paren": false,
     "typedef-whitespace": false,
     "variable-name": false,
