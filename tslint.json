@@ -81,18 +81,10 @@
       true,
       "single"
     ],
-    "space-before-function-paren": {
-     false
-    },
-    "typedef-whitespace": {
-    false
-    },
-    "variable-name": {
-      false
-    },
-    "whitespace": {
-      false
-    },
+    "space-before-function-paren": false,
+    "typedef-whitespace": false,
+    "variable-name": false,
+    "whitespace": false,
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
