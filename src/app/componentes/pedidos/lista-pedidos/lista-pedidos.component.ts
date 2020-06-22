@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UsuarioService } from 'src/app/servicios/usuario.service';
 import { Pedido } from 'src/app/modelo/pedido';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
-import { ModalClose } from '../../modals/modal-close/modal-close.layout';
+import { ModalCloseComponent } from '../../modals/modal-close/modal-close.layout';
 import { ModalListComponent } from '../../modals/modal-list/modal-list.component';
 import { CancelarTicketRequest } from 'src/app/modelo/cancelarTicketRequest';
 
@@ -47,7 +47,7 @@ export class ListaPedidosComponent implements OnInit {
   }
 
   crearModal(titulo:string, descripcion:string){
-    const modalInform = this.modalService.open(ModalClose);
+    const modalInform = this.modalService.open(ModalCloseComponent);
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
   }

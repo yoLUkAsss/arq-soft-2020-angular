@@ -6,7 +6,7 @@ import { NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './modal-close.layout.html',
   styleUrls: ['./modal-close.layout.css']
 })
-export class ModalClose {
+export class ModalCloseComponent {
 
   @Input()
   title: string;

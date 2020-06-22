@@ -4,7 +4,7 @@ import { LoginRequest } from 'src/app/modelo/loginRequest';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { ModalClose } from '../../modals/modal-close/modal-close.layout';
+import { ModalCloseComponent } from '../../modals/modal-close/modal-close.layout';
 
 
 @Component({
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
   }
 
   crearModal(titulo: string, descripcion: string) {
-    const modalInform = this._modalService.open(ModalClose);
+    const modalInform = this._modalService.open(ModalCloseComponent);
     modalInform.componentInstance.title = titulo;
     modalInform.componentInstance.description = descripcion;
   }

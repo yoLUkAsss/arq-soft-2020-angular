@@ -21,7 +21,7 @@ import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 /* Modals */
-import { ModalClose } from './componentes/modals/modal-close/modal-close.layout';
+import { ModalCloseComponent } from './componentes/modals/modal-close/modal-close.layout';
 
 /* Guards */
 import { AuthGuard } from './auth/auth.guard';
@@ -42,7 +42,7 @@ import { UsuarioService } from './servicios/usuario.service';
     RegistroComponent,
     NavbarComponent,
     InicioComponent,
-    ModalClose,
+    ModalCloseComponent,
     ModalConfirmacionComponent,
     CrearPedidoComponent,
     ListaPedidosComponent,

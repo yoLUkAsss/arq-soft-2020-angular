@@ -15,15 +15,14 @@ export class Pedido{
         this.area = area;
         this.estados = estados;
     }
-
-    public setId(id:number){
-        this.id = id;
-    }
-
     static crearDesdeJson(json:any): Pedido{
         const ticket = new Pedido(json.cliente.email, json.insumo, Area.crearDesdeJson(json.area), 
                                 json.estados.map(estado => Estado.crearDesdeJson(estado)));
         ticket.setId(json.id);
         return ticket;
       }
+
+    public setId(id:number){
+        this.id = id;
+    }
 }
