@@ -19,8 +19,8 @@ import { ModalClose} from "../../modals/modal-close/modal-close.layout";
 export class CrearPedidoComponent implements OnInit {
   formularioCrearPedido: FormGroup;
   submitted = false;
-  insumoSeleccionado;
-  idAreaSeleccionada:number;
+  insumoSeleccionado="1";
+  idAreaSeleccionada= 1;
 
   insumos:string[] = [ "Mascara", "Barbijo", "Respirador", "Medicamento", "Guante" ];
   areas:Area[];
