@@ -82,47 +82,16 @@
       "single"
     ],
     "space-before-function-paren": {
-      "options": {
-        "anonymous": "never",
-        "asyncArrow": "never",
-        "constructor": "never",
-        "method": "never",
-        "named": "never"
-      }
+     false
     },
     "typedef-whitespace": {
-      "options": [
-        {
-          "call-signature": "nospace",
-          "index-signature": "nospace",
-          "parameter": "nospace",
-          "property-declaration": "nospace",
-          "variable-declaration": "nospace"
-        },
-        {
-          "call-signature": "onespace",
-          "index-signature": "onespace",
-          "parameter": "onespace",
-          "property-declaration": "onespace",
-          "variable-declaration": "onespace"
-        }
-      ]
+    false
     },
     "variable-name": {
-      "options": [
-        "ban-keywords",
-        "check-format",
-        "allow-pascal-case"
-      ]
+      false
     },
     "whitespace": {
-      "options": [
-        "check-branch",
-        "check-decl",
-        "check-operator",
-        "check-separator",
-        "check-typecast"
-      ]
+      false
     },
     "no-conflicting-lifecycle": true,
     "no-host-metadata-property": true,
