@@ -41,7 +41,7 @@ export class RegistroComponent implements OnInit {
         this.router.navigate(['/login']); 
       }
     } catch (error) {
-        var errorPantalla:string = error.error.Error;
+        const errorPantalla:string = error.error.Error;
         console.log(errorPantalla);
         this.crearModal('Alta de usuario', errorPantalla);
     }

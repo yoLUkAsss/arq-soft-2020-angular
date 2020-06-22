@@ -33,11 +33,12 @@ export class LoginComponent implements OnInit {
 
         await this.usuarioService.login(loginRequest).then(resultado => this.setearRoles(resultado));
 
-        if(this.usuarioService.esAdminLogueado())
+        if(this.usuarioService.esAdminLogueado()){
           this.router.navigate(['/inicio']);
-        
-        else
+        }
+        else{
           this.router.navigate(['/pedido']);
+        }         
       }
     }
     catch (error) {

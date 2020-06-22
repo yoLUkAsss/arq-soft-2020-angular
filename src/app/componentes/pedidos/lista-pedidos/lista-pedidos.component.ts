@@ -31,7 +31,7 @@ export class ListaPedidosComponent implements OnInit {
 
   async cancelarPedido(id:number):Promise<any> {
       try{
-        let ticket:CancelarTicketRequest = new CancelarTicketRequest(id);
+        const ticket:CancelarTicketRequest = new CancelarTicketRequest(id);
         await this.usuarioService.cancelarPedido(ticket);
         this.usuarioService.getPedidos().then(pedidos => this.setearPedido(pedidos));
         this.crearModal('Cancelación pedido', 'El pedido se ha cancelado satistfactoriamente');     
