@@ -1,7 +1,7 @@
 export class Insumo{
-   type:string;
+   type: string;
 
-    constructor(type:string){
+    constructor(type: string){
         this.type = type;
     }
 }

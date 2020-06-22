@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.submitted = true;
     try {
       if (this.formularioLogin.valid) {
-        var loginRequest: LoginRequest = new LoginRequest(
+        let loginRequest: LoginRequest = new LoginRequest(
           this.formularioLogin.get('email').value,
           this.formularioLogin.get('password').value
         );
@@ -40,7 +40,6 @@ export class LoginComponent implements OnInit {
       }
     }
     catch (error) {
-      //var errorPantalla: string = error.error.Error;
       console.log(error);
       this.crearModal('LOGIN', "El usuario y/o contraseña ingresados es/son incorrecto/s");
     }

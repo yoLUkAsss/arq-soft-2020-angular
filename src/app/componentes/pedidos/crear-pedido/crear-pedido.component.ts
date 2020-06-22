@@ -48,19 +48,19 @@ export class CrearPedidoComponent implements OnInit {
     try{
       if(this.formularioCrearPedido.valid){
         if('Medicamento' == this.insumoSeleccionado){
-          var medicamento:Medicamento = new Medicamento(
+          let medicamento:Medicamento = new Medicamento(
             this.formularioCrearPedido.get('insumo').value,
             this.formularioCrearPedido.get('medicamento').value
             );
-          var ticket:CrearTicketDTO = new CrearTicketDTO(medicamento, this.idAreaSeleccionada);
+          let ticket:CrearTicketDTO = new CrearTicketDTO(medicamento, this.idAreaSeleccionada);
           await this.usuarioService.crearPedido(ticket);
           this.actualizarPedidos();       
           this.crearModal('Crear pedido', 'El pedido se ha creado de forma satisfactoria');
         }
         else{
           this.formularioCrearPedido.removeControl('medicamento')
-          var insumo:Insumo = new Insumo(this.formularioCrearPedido.get('insumo').value);
-          var ticket:CrearTicketDTO = new CrearTicketDTO(insumo, this.idAreaSeleccionada);       
+          let insumo:Insumo = new Insumo(this.formularioCrearPedido.get('insumo').value);
+          let ticket:CrearTicketDTO = new CrearTicketDTO(insumo, this.idAreaSeleccionada);       
           await this.usuarioService.crearPedido(ticket);
           this.actualizarPedidos();          
           this.crearModal('Crear pedido', 'El pedido se ha creado de forma satisfactoria');

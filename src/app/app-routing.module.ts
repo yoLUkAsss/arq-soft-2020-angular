@@ -4,9 +4,9 @@ import { AuthGuard } from './auth/auth.guard';
 import { RoleGuard } from './auth/role.guard';
 
 //** Components **//
-import {InicioComponent} from "./componentes/inicio/inicio.component";
-import {RegistroComponent} from "./componentes/usuario/registro/registro.component";
-import {LoginComponent} from "./componentes/usuario/login/login.component";
+import {InicioComponent} from './componentes/inicio/inicio.component';
+import {RegistroComponent} from './componentes/usuario/registro/registro.component';
+import {LoginComponent} from './componentes/usuario/login/login.component';
 import { PedidosComponent } from './componentes/pedidos/pedidos.component';
 
 
