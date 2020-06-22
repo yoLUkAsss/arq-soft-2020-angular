@@ -1,5 +1,3 @@
-import { Insumo } from './insumo';
-
 export class CrearTicketDTO{
    insumo;
    idArea;

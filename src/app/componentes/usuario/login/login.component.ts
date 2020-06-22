@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     }
     catch (error) {
       console.log(error);
-      this.crearModal('LOGIN', "El usuario y/o contraseña ingresados es/son incorrecto/s");
+      this.crearModal('LOGIN', 'El usuario y/o contraseña ingresados es/son incorrecto/s');
     }
   }
 
